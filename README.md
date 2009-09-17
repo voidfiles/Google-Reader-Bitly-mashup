@@ -1,0 +1,2 @@
+== Track who sees your google reader items
+This extensions modifies the google reader bookmarlett window. It changes the url into a bit.ly url, and it adds an img tag with the url as well. This lets you know roughly how many times it has been seen, because when the item comes into view the image gets loaded. Its not perfect but I find that lets me know a little bit more about how people use my stuff. 
