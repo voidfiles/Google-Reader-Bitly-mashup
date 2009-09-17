@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+        
+        var bitly_api_url = "http://api.bit.ly";
+        var bitly_api_key = "";
+        var bitly_login = "";
+        jQuery().ajaxError(function(){
+           console.log("ajax failed");
+        });
+        var params = {
+            version:"2.0.1",
+            login:bitly_login,
+            apiKey:bitly_api_key,
+            format:"json",
+            callback:"?",
+            history:"1",
+            longUrl:""
+        };
+        var shorten_url = bitly_api_url + "/shorten";
+        console.log(shorten_url);
+        chrome.extension.onConnect.addListener(function(port, name) {
+          console.log(name);
+          console.assert(name == "notifyChannel");
+          port.onMessage.addListener(function(msg) {
+              params["longUrl"] = msg["long_url"];
+              jQuery.getJSON(
+                  shorten_url,
+                  params,
+                  function(data){;
+                      var new_port = chrome.tabs.connect(port.tab.id, {name: "gotBitly"});
+                      new_port.postMessage(data);
+                  }
+              );
+          });
+        });
+        
+
+        </script>
+    </head>
+    <body></body>
+</html>

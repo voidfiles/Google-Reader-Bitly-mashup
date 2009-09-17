@@ -1,0 +1,22 @@
+{
+    "name": "Google Reader Bookmarlette expander",
+    "version": "1.0",
+    "description": "The first extension that I made.",
+    "background_page": "background.html",
+    "content_scripts": [
+    {
+        "matches": ["http://www.google.com/reader/link-frame"],
+        "css": ["blank.css"],
+        "js": ["jquery.js", "myscript.js"]
+
+    }
+    ],
+    "permissions": [
+        "tabs", 
+        "bookmarks", 
+        "http://*.google.com/",
+        "http://api.bit.ly/*",
+        "http://api.bit.ly/"
+    ]
+
+}
