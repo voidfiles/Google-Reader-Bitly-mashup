@@ -3,6 +3,7 @@
     "version": "1.0",
     "description": "The first extension that I made.",
     "background_page": "background.html",
+    "update_url": "http://myhost.com/mytestextension/updates.xml",
     "content_scripts": [
     {
         "matches": ["http://www.google.com/reader/link-frame"],
