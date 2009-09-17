@@ -6,13 +6,15 @@
         var bitly_api_url = "http://api.bit.ly";
         var bitly_api_key = "";
         var bitly_login = "";
+
+        
         jQuery().ajaxError(function(){
            console.log("ajax failed");
         });
         var params = {
             version:"2.0.1",
-            login:bitly_login,
-            apiKey:bitly_api_key,
+            login:localStorage.bitly_login,
+            apiKey:localStorage.bitly_api_key,
             format:"json",
             callback:"?",
             history:"1",
@@ -21,9 +23,19 @@
         var shorten_url = bitly_api_url + "/shorten";
         console.log(shorten_url);
         chrome.extension.onConnect.addListener(function(port, name) {
-          console.log(name);
-          console.assert(name == "notifyChannel");
+          console.log(port.name);
           port.onMessage.addListener(function(msg) {
+              if(!localStorage.bitly_api_key){
+                  chrome.tabs.create({url:"user_settings.html"});
+                  throw new Error("need an api key");
+              }
+              if(!localStorage.bitly_username){
+                  chrome.tabs.create({url:"user_settings.html"});
+                  throw new Error("need an username");
+              }
+              console.log(localStorage);
+              params["login"] = localStorage.bitly_username;
+              params["apiKey"] = localStorage.bitly_api_key;
               params["longUrl"] = msg["long_url"];
               jQuery.getJSON(
                   shorten_url,

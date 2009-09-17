@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script src="jquery.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+            set_settings = function(){
+                localStorage.bitly_api_key = $("#api_key").val();
+                localStorage.bitly_username = $("#username").val();
+                alert("Done. Go back to the page and try again.");
+            }
+        </script>
+    </head>
+    <body>
+        <h1> Need some settings from the user </h1>
+        <form name="user_settings" id="user_setings">
+            <label for="api_key">Bit.ly API Key</label><input type="text" name="api_key" id="api_key"><br />
+            <label for="username">Bit.ly Username</label><input type="text" name="username" id="username"><br />
+        </form>
+        <a href="javascript:set_settings();">Set Settings</a>
+    </body>
+</html>

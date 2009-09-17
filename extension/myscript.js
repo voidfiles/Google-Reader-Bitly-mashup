@@ -8,6 +8,12 @@ port.postMessage({long_url:long_url});
 $("#submit-button").attr("disabled","disabled");
 chrome.extension.onConnect.addListener(function(port){
     port.onMessage.addListener( function(msg){
+        console.log("got message back", msg);
+        if( msg["errorCode"] && msg["errorCode"] == "203"){
+            alert("You need to login to bit.ly before we can continue");
+            $("#submit-button").attr("disabled","");
+            return;
+        }
         try{
             for(var url in msg["results"]){
                var short_url = msg["results"][url]["shortUrl"];
