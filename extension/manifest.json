@@ -5,13 +5,14 @@
     "background_page": "background.html",
     "update_url": "http://github.com/voidfiles/Google-Reader-Bitly-mashup/raw/master/updates.xml",
     "content_scripts": [
-    {
-        "matches": ["http://www.google.com/reader/link-frame"],
-        "css": ["blank.css"],
-        "js": ["jquery.js", "myscript.js"]
+        {
+            "matches": ["http://www.google.com/reader/link-frame"],
+            "css": ["blank.css"],
+            "js": ["jquery.js", "myscript.js"]
 
-    }
+        }
     ],
+    "icons": { "32": "logo.png"},
     "permissions": [
         "tabs", 
         "bookmarks", 
