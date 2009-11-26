@@ -1,6 +1,6 @@
 {
     "name": "Google Reader Bookmarlette expander",
-    "version": "1.0",
+    "version": "2.0",
     "description": "The first extension that I made.",
     "background_page": "background.html",
     "update_url": "http://github.com/voidfiles/Google-Reader-Bitly-mashup/raw/master/updates.xml",
